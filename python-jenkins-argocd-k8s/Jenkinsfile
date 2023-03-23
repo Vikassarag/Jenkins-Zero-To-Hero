@@ -32,7 +32,8 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    sudo docker push vikassarag/cicd-e2e:${BUILD_NUMBER}
+                    sudo -i
+                    docker push vikassarag/cicd-e2e:${BUILD_NUMBER}
                     '''
                 }
             }
