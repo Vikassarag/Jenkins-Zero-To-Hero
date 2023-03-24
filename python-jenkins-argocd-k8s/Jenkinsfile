@@ -52,7 +52,6 @@ pipeline {
 
 
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'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', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-                        sh 'cf login some.awesome.url -u $USERNAME -p $PASSWORD'
                         sh '''
                         cat deploy.yaml
                         sed -i "s/33/${BUILD_NUMBER}/g" deploy.yaml
