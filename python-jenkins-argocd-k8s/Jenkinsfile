@@ -10,7 +10,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: 'cf3f4d3a-9f37-48ca-bca0-d1c56e1cb677', 
+                git credentialsId: 'vikassarag097054', 
                 url: 'https://github.com/Vikassarag/Jenkins-Zero-To-Hero.git',
                 branch: 'main'
            }
@@ -40,7 +40,7 @@ pipeline {
         
         stage('Checkout K8S manifest SCM'){
             steps {
-                git credentialsId: 'cf3f4d3a-9f37-48ca-bca0-d1c56e1cb677', 
+                git credentialsId: 'vikassarag097054', 
                 url: 'https://github.com/Vikassarag/cicd-demo-manifests-repo.git',
                 branch: 'main'
             }
