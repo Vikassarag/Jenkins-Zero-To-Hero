@@ -49,7 +49,7 @@ pipeline {
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
-                    withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'vikassarag')]) {
+                    withCredentials([usernamePassword(credentialsId: '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', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
                         cat deploy.yaml
                         sed -i "s/33/${BUILD_NUMBER}/g" deploy.yaml
