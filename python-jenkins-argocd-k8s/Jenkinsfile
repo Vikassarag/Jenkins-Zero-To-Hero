@@ -57,6 +57,7 @@ pipeline {
                         git add .
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
+                        git push --set-upstream https://github.com/Vikassarag/cicd-demo-manifests-repo.git main
                         git push https://github.com/Vikassarag/cicd-demo-manifests-repo.git HEAD:main
                         '''                        
                     }
