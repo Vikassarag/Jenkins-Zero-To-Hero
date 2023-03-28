@@ -33,6 +33,8 @@ pipeline {
                     sh '''
                     echo 'Push to Repo'
                     docker push vikassarag/cicd-e2e:${BUILD_NUMBER}
+                    docker rmi vikassarag/cicd-e2e:${BUILD_NUMBER}
+                    docker images
                     '''
                 }
             }
