@@ -33,6 +33,8 @@ pipeline {
                     sh '''
                     echo 'Push to Repo'
                     docker push vikassarag/cicd-e2e:${BUILD_NUMBER}
+                    docker rmi vikassarag/cicd-e2e:${BUILD_NUMBER}
+                    docker images
                     '''
                 }
             }
@@ -52,11 +54,12 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'vikassarag097054', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
                         cat deploy.yaml
-                        sed -i "s/62/${BUILD_NUMBER}/g" deploy.yaml
+                        sed -i "s/cicd-e2e:.*/cicd-e2e:${BUILD_NUMBER}/g" deploy.yaml
                         cat deploy.yaml
                         git add deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
+                        git push --set-upstream https://github.com/Vikassarag/cicd-demo-manifests-repo.git main
                         git push https://github.com/Vikassarag/cicd-demo-manifests-repo.git HEAD:main
                         '''                        
                     }
